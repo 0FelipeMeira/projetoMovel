@@ -1,1 +1,2 @@
-Aqui ficarão os arquivos relacionados ao backend, informações para acesso ao banco de dados e afins
+# projetoMovel
+Projeto da disciplina de programação de dispositivos móveis com ReactNative + Expo (Android)
