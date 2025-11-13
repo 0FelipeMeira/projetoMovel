@@ -16,8 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from appMed.views import healthcheck, home, auth_login, auth_me, auth_refresh
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('appMed.routers')),
+    path('api/v1/auth/login', auth_login, name='auth_login'),
+    path('api/v1/auth/me', auth_me, name='auth_me'),
+    path('api/v1/auth/refresh', auth_refresh, name='auth_refresh'),
+    path('healthz', healthcheck, name='healthz'),
+    path('', home, name='home'),
 ]
