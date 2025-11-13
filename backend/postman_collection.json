@@ -1,0 +1,80 @@
+{
+  "info": {
+    "_postman_id": "d9a7a7a4-7c0c-4e32-9e5f-9c5d9a0f3f11",
+    "name": "DoseCerta API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Coleção de endpoints da API DoseCerta para desenvolvimento e testes locais. Use a variável {{base_url}}."
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Healthcheck JSON",
+      "request": {"method": "GET", "url": "{{base_url}}/healthz"}
+    },
+    {
+      "name": "API Root",
+      "request": {"method": "GET", "url": "{{base_url}}/api/v1/"}
+    },
+    {
+      "name": "Criar responsável",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Fulano\",\n  \"email\": \"fulano@example.com\",\n  \"senha\": \"senha123\",\n  \"confirmar_senha\": \"senha123\"\n}"
+        },
+        "url": "{{base_url}}/api/v1/registros/"
+      }
+    },
+    {
+      "name": "Criar idoso",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"responsavel\": 1,\n  \"nome\": \"Dona Maria\",\n  \"data_nascimento\": \"1940-07-01\"\n}"
+        },
+        "url": "{{base_url}}/api/v1/idosos/"
+      }
+    },
+    {
+      "name": "Criar medicamento com horários",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"idoso\": 1,\n  \"nome\": \"Losartana\",\n  \"dosagem\": \"50 mg\",\n  \"data_inicio\": \"2025-01-01\",\n  \"frequencia_tipo\": \"horarios_fixos\",\n  \"dias_semana\": \"SEG,TER,QUA,QUI,SEX,SAB,DOM\",\n  \"horarios\": [{\"hora\": \"08:00\"}, {\"hora\": \"20:00\"}]\n}"
+        },
+        "url": "{{base_url}}/api/v1/medicamentos/"
+      }
+    },
+    {
+      "name": "Agenda do dia (idoso=1)",
+      "request": {"method": "GET", "url": "{{base_url}}/api/v1/idosos/1/agenda?data=2025-01-10"}
+    },
+    {
+      "name": "Registrar tomada (med=1)",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"horario_previsto\": \"2025-01-10T08:00:00-03:00\",\n  \"tomado\": true,\n  \"observacao\": \"Tomado com água\"\n}"
+        },
+        "url": "{{base_url}}/api/v1/medicamentos/1/registrar-tomada"
+      }
+    },
+    {
+      "name": "Histórico de tomadas (idoso=1)",
+      "request": {"method": "GET", "url": "{{base_url}}/api/v1/tomadas/?idoso=1"}
+    }
+  ]
+}
