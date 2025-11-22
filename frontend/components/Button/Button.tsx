@@ -15,7 +15,7 @@ const TouchableOpacity = styled.TouchableOpacity<{
 }>`
   width: ${(props) => props.width || "auto"};
   background-color: ${(props) =>
-    props.type === "secondary" ? "transparent" : "#7100b3ff"};
+    props.type === "secondary" ? "transparent" : "#29ACB9"};
   border-radius: 8px;
   padding-vertical: 12px;
   padding-horizontal: 16px;

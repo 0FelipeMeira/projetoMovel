@@ -1,6 +1,5 @@
 import { Button } from "@/components/Button/Button";
 import { TextInput } from "@/components/Input/TextInput";
-import { Title } from "@/components/Text/Title";
 import React, { useState } from "react";
 import { styled } from "styled-components/native";
 
@@ -13,6 +12,11 @@ const RegisterView = styled.View`
   padding: 10%;
 `;
 
+const Logo = styled.Image`
+  width: 80%;
+  object-fit: contain;
+`;
+
 export default function RegisterScreen({ navigation }: any) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +25,8 @@ export default function RegisterScreen({ navigation }: any) {
 
   return (
     <RegisterView>
-      <Title>Register</Title>
+      <Logo source={require("../assets/images/logoMain.png")} />
+
       <TextInput
         placeholder="Nome"
         value={name}
@@ -49,7 +54,7 @@ export default function RegisterScreen({ navigation }: any) {
 
       <Button
         width="60%"
-        title="Entrar"
+        title="Registrar"
         onPress={() => navigation.navigate("Login")}
       />
     </RegisterView>
