@@ -3,83 +3,26 @@ import { TextInput } from "@/components/Input/TextInput";
 import { DatePicker } from "@/components/Picker/DatePicker";
 import { TimePicker } from "@/components/Picker/TimePicker";
 import { BodyText } from "@/components/Text/BodyText";
+import { Label } from "@react-navigation/elements";
 import React, { useState } from "react";
-import { styled } from "styled-components/native";
+import {
+  FormView,
+  HomeView,
+  HorariosHeader,
+  HorariosItem,
+  HorariosViewContainer,
+  HorariosWrap,
+  Logo,
+} from "./edit";
 
-export const HomeView = styled.View`
-  flex: 1;
-  background-color: #f5f5f5;
-  align-items: center;
-`;
-
-export const Logo = styled.Image`
-  width: 80%;
-  height: 10%;
-  object-fit: contain;
-  margin-top: 5%;
-`;
-
-export const FormView = styled.View`
-  width: 90%;
-  background: transparent;
-  border-radius: 0px;
-  padding: 0;
-  margin-top: 32px;
-  margin-bottom: 32px;
-  align-items: flex-start;
-`;
-
-export const Label = styled.Text`
-  font-size: 16px;
-  font-weight: 900;
-  color: #222;
-  margin-bottom: 6px;
-  margin-left: 2px;
-`;
-
-export const HorariosViewContainer = styled.ScrollView`
-  border: 1px solid #e0e0e0;
-  width: 100%;
-  height: 225px;
-  border-radius: 12px;
-  background: #f9f9f9;
-  padding: 12px 8px;
-  margin-top: 8px;
-  margin-bottom: 12px;
-`;
-
-export const HorariosWrap = styled.View`
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 8px;
-`;
-
-export const HorariosHeader = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 12px;
-  margin-bottom: 4px;
-  width: 100%;
-`;
-
-export const HorariosItem = styled.View`
-  border: 1px solid #29acb9;
-  border-radius: 18px;
-  flex-direction: row;
-  align-items: center;
-  margin-right: 10px;
-  padding: 4px 10px;
-`;
-
-export default function EditScreen({ navigation }: any) {
+export default function AddScreen({ navigation }: any) {
   const [nome, setNome] = useState("");
   const [dosagem, setDosagem] = useState("");
 
   const [dataInicio, setDataInicio] = useState<Date>(new Date());
   const [dataFim, setDataFim] = useState<Date>(new Date());
 
-  const [horarios, setHorarios] = useState<string[]>([]);
+  const [horarios, setHorarios] = useState<string[]>(["03:00"]);
   let sortedHorarios = horarios.sort();
 
   const removeHorario = (idx: number) => {
@@ -96,7 +39,7 @@ export default function EditScreen({ navigation }: any) {
     <HomeView>
       <Logo source={require("../assets/images/logoInLine.png")} />
 
-      <Button title="Salvar" onPress={handleSubmit} />
+      <Button title="Adicionar" onPress={handleSubmit} />
 
       <FormView>
         <Label>Nome do medicamento</Label>
