@@ -29,6 +29,13 @@ export default function LoginScreen({ navigation }: any) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  // const handleSubmit = async () => {
+  //   await scheduleMedicationReminder(nome, dosagem, dataAgendamento);
+
+  //   alert("Lembretes criados com sucesso!");
+  //   navigation.goBack();
+  // };
+
   return (
     <LoginView>
       <Logo source={require("../assets/images/logoMain.png")} />
@@ -51,6 +58,7 @@ export default function LoginScreen({ navigation }: any) {
         width="60%"
         title="Entrar"
         onPress={() => navigation.navigate("Register")}
+        // onPress={() => handleSubmit()}
       />
     </LoginView>
   );

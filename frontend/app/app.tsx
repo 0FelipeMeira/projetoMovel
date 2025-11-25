@@ -4,6 +4,7 @@ import EditScreen from "./edit";
 import HomeScreen from "./home";
 import LoginScreen from "./login";
 import RegisterScreen from "./register";
+import AlarmScreen from "./alarm";
 
 const Stack = createStackNavigator();
 
@@ -14,6 +15,7 @@ const App = () => {
 
   return (
     <Stack.Navigator screenOptions={options}>
+      <Stack.Screen name="Alarm" component={AlarmScreen} />
       <Stack.Screen name="Add" component={AddScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />
